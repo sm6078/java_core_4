@@ -30,7 +30,7 @@ public class Homework1 {
 
         String resultName = name.trim().toUpperCase();
         String[] arrStr = resultName.split(" ");
-        String sexDeterminant = arrStr[0].substring(arrStr[0].length()-3);
+        String sexDeterminant = arrStr[0].substring(arrStr[0].length() - 3);
         if (sexDeterminant.contains("ОВА")) {
             System.out.println("Уважаемая " + resultName);
         } else if (sexDeterminant.contains("ОВ")) {
@@ -58,8 +58,7 @@ public class Homework1 {
         // когда топлива не меньше 10 литров, двигатель работает, колеса работают, нет ошибок
         //В ином случае, машина не должна запускаться
         if (
-                fuel >= 10
-                        && (isWheelWork1 && isWheelWork2 && isWheelWork3 && isWheelWork4)
+                fuel >= 10 && (isWheelWork1 && isWheelWork2 && isWheelWork3 && isWheelWork4)
                         && !hasErrors
                         && isEngineWork
         ) {
@@ -78,7 +77,8 @@ public class Homework1 {
         System.out.println("Исходная строка:" + simply);
         String result = simply.replace("this is", "those are");
         System.out.println("Резльтат преобразования: " + result);
-        System.out.println("Индекс (число) второй буквы 'o' в строке: " + result.indexOf("o", result.indexOf("o") + 1));
+        System.out.println("Индекс (число) второй буквы 'o' в строке: "
+                + result.indexOf("o", result.indexOf("o") + 1));
     }
 
     /**
@@ -102,7 +102,8 @@ public class Homework1 {
 
     //Финансовые показатели
     //Доход компании считается как умножение стоимости на количество проданных кг
-    //Расход компании считается как умношение себестоимости на количество проданных кг + миллион рублей
+    //Расход компании считается как умношение себестоимости на
+    // количество проданных кг + миллион рублей
     //Прибыль до налогов считается как: доход - расход
     //Налоги считаются так:
     // прибыль до налогов больше 2_000_000, облагается ставкой 13%
@@ -140,7 +141,8 @@ public class Homework1 {
                 ? new BigDecimal(inputCountNeck * 299)
                 : new BigDecimal(inputCountNeck * 311);
 
-        BigDecimal rate = costPriceSausage.add(costPriceHam).add(costPriceNeck).add(new BigDecimal(1_000_000));
+        BigDecimal rate = costPriceSausage.add(costPriceHam)
+                .add(costPriceNeck).add(new BigDecimal(1_000_000));
         BigDecimal profit = income.subtract(rate);
 
         profit = profit.subtract(calculateTask(profit));

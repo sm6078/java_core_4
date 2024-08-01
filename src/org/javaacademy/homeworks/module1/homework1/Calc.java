@@ -23,13 +23,13 @@ public class Calc {
         double numberTwo = Double.parseDouble(scanner.nextLine());
         scanner.close();
         if (operation.equals("+")) {
-            System.out.println("Результат: " + (numberOne + numberTwo));
+            System.out.printf("Результат: %s%n", numberOne + numberTwo);
         } else if (operation.equals("-")) {
-            System.out.println("Результат: " + (numberOne - numberTwo));
+            System.out.printf("Результат: %s%n", numberOne - numberTwo);
         } else if (operation.equals("*")) {
-            System.out.println("Результат: " + (numberOne * numberTwo));
+            System.out.printf("Результат: %s%n", numberOne * numberTwo);
         } else if (operation.equals("/")) {
-            System.out.println("Результат: " + (numberOne / numberTwo));
+            System.out.printf("Результат: %s%n", numberOne / numberTwo);
         } else {
             System.out.println("Произошла ошибка.");
         }
