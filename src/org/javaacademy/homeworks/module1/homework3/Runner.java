@@ -2,12 +2,11 @@ package org.javaacademy.homeworks.module1.homework3;
 
 public class Runner {
     public static void main(String[] args) {
-        //В этом дз уже будет проверятся наличие корректных модификаторов доступа
-        //у классов, атрибутов, методов
+        ex1();
     }
 
     public static void ex1() {
-        //Зайди в shop.Runner
+        org.javaacademy.homeworks.module1.homework3.shop.Runner.main(null);
     }
 
     public static void ex2() {
