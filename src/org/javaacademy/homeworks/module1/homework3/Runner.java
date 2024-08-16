@@ -1,5 +1,8 @@
 package org.javaacademy.homeworks.module1.homework3;
 
+import org.javaacademy.homeworks.module1.homework3.ex3.Pyramid1;
+import org.javaacademy.homeworks.module1.homework3.ex3.Pyramid2;
+import org.javaacademy.homeworks.module1.homework3.ex3.Pyramid3;
 import org.javaacademy.homeworks.module1.homework3.phone.factory.FactoryIphone;
 import org.javaacademy.homeworks.module1.homework3.phone.factory.FactorySamsung;
 import org.javaacademy.homeworks.module1.homework3.phone.factory.phone.PhoneIphone;
@@ -11,6 +14,7 @@ public class Runner {
         System.out.println("____________________________");
         ex2();
         System.out.println("____________________________");
+        ex3();
     }
 
     public static void ex1() {
@@ -38,28 +42,36 @@ public class Runner {
         samsung.getCamera().makePhoto();
     }
 
+    //Задача: Пирамида наследования
+    //Создать классы Pyramid1, Pyramid2, Pyramid3.
+    //НЕОБХОДИМО НАСЛЕДОВАНИЕ С ИСПОЛЬЗОВАНИЕМ РОДИТЕЛЬСКИХ МЕТОДОВ!
+    // Создать метод print, который будет выводить следующий текст:
+    // M <- из Pyramid1
+    // MM <- из Pyramid2
+    // MMM <- из Pyramid3
+
+    //Т.е. при вызове pyramid1.print выведется:
+    // M
+    // MM
+    // MMM
+
+    //при вызове pyramid2.print выведется:
+    // MM
+    // MMM
+
+    //при вызове pyramid3.print выведется:
+    // MMM
+
+    //создать здесь экземпляр класса pyramid1 и вызвать print
     public static void ex3() {
-        //Задача: Пирамида наследования
-        //Создать классы Pyramid1, Pyramid2, Pyramid3.
-        //НЕОБХОДИМО НАСЛЕДОВАНИЕ С ИСПОЛЬЗОВАНИЕМ РОДИТЕЛЬСКИХ МЕТОДОВ!
-        // Создать метод print, который будет выводить следующий текст:
-        // M <- из Pyramid1
-        // MM <- из Pyramid2
-        // MMM <- из Pyramid3
-
-        //Т.е. при вызове pyramid1.print выведется:
-        // M
-        // MM
-        // MMM
-
-        //при вызове pyramid2.print выведется:
-        // MM
-        // MMM
-
-        //при вызове pyramid3.print выведется:
-        // MMM
-
-        //создать здесь экземпляр класса pyramid1 и вызвать print
+        final Pyramid1 pyramid1 = new Pyramid1();
+        final Pyramid2 pyramid2 = new Pyramid2();
+        final Pyramid3 pyramid3 = new Pyramid3();
+        pyramid1.print();
+        System.out.println("-->");
+        pyramid2.print();
+        System.out.println("-->");
+        pyramid3.print();
     }
 
     /**
