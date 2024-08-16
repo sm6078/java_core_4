@@ -68,10 +68,6 @@ public class Runner {
         final Pyramid2 pyramid2 = new Pyramid2();
         final Pyramid3 pyramid3 = new Pyramid3();
         pyramid1.print();
-        System.out.println("-->");
-        pyramid2.print();
-        System.out.println("-->");
-        pyramid3.print();
     }
 
     /**
