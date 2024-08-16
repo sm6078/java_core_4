@@ -1,38 +1,41 @@
 package org.javaacademy.homeworks.module1.homework3;
 
+import org.javaacademy.homeworks.module1.homework3.phone.factory.FactoryIphone;
+import org.javaacademy.homeworks.module1.homework3.phone.factory.FactorySamsung;
+import org.javaacademy.homeworks.module1.homework3.phone.factory.phone.PhoneIphone;
+import org.javaacademy.homeworks.module1.homework3.phone.factory.phone.PhoneSamsung;
+
 public class Runner {
     public static void main(String[] args) {
         ex1();
+        System.out.println("____________________________");
+        ex2();
+        System.out.println("____________________________");
     }
 
     public static void ex1() {
         org.javaacademy.homeworks.module1.homework3.shop.Runner.main(null);
     }
 
+    //Задача: Фабрика телефонов
+    //Организовать фабрику создания двух телефонов
+    //ВНИМАНИЕ! Фабрики создают телефоны без создания экземпляра фабрики!
+    //
+    //Создать телефон Iphone, который состоит из двух процессоров, камеры, корпуса.
+    //Умеет фотографировать используя камеру (печать в консоль - "сделано фото").
+    //Умеет печатать на экран информацию о процессорах.
+    //
+    //Создать телефон Samsung, который состоит из процессора, камеры, корпуса.
+    //Умеет фотографировать используя камеру (печать в консоль - "сделано фото")
     public static void ex2() {
-        //Задача: Фабрика телефонов
-        //Организовать фабрику создания двух телефонов
-        //
-        //Создать комплектующие телефона
-        //Камера: умеет фотографировать. Свойство - количество мега пикселей.
-        //Процессор: свойство - количество вычислений в секунду (mhz)
-        //Корпус: свойства - размеры - ширина, высота, длина
-        //
-        //Создать телефон Samsung, который состоит из процессора, камеры, корпуса.
-        //Умеет фотографировать используя камеру (печать в консоль - "сделано фото")
-        //
-        //Создать телефон Iphone, который состоит из двух процессоров, камеры, корпуса.
-        //Умеет фотографировать используя камеру (печать в консоль - "сделано фото").
-        //Умеет печатать на экран информацию о процессорах.
-        //
-        //Создать фабрику Iphone, которая:
-        //Создает iphone и заполняет его двумя процессорами (1000 Mhz), 8 мегапиксельной камерой,
-        // и корпусом 60х200х10
-        //
-        //Создать фабрику Samsung, которая:
-        //Создает samsung и заполняет его процессором (1500 Mhz), 16 мегапиксельной камерой,
-        // и корпусом 60х200х15
-        //ВНИМАНИЕ! Фабрики создают телефоны без создания экземпляра фабрики!
+        final PhoneIphone iphone = FactoryIphone.doPhoneIphone();
+        final PhoneSamsung samsung = FactorySamsung.doPhoneSamsung();
+        System.out.println(iphone.toString());
+        iphone.doPhoto();
+        iphone.printProcessorInfo();
+        System.out.println("-->");
+        System.out.println(samsung.toString());
+        samsung.getCamera().makePhoto();
     }
 
     public static void ex3() {
