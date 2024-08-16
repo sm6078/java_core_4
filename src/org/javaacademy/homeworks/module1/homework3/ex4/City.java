@@ -23,9 +23,12 @@ public final class City {
 
     @Override
     public String toString() {
-        return "City{" +
-                "nameCity='" + nameCity + '\'' +
-                ", houses=" + Arrays.toString(houses) +
-                '}';
+        return "City{"
+                + "nameCity='"
+                + nameCity
+                + '\''
+                + ", houses="
+                + Arrays.toString(houses)
+                + '}';
     }
 }
