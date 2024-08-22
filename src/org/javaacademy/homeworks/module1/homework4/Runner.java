@@ -8,17 +8,25 @@ import org.javaacademy.homeworks.module1.homework4.ex2.Airplane;
 import org.javaacademy.homeworks.module1.homework4.ex2.Duck;
 import org.javaacademy.homeworks.module1.homework4.ex2.FlyException;
 import org.javaacademy.homeworks.module1.homework4.ex2.Flying;
-import org.javaacademy.homeworks.module1.homework4.ex3.*;
+import org.javaacademy.homeworks.module1.homework4.ex3.Bird;
+import org.javaacademy.homeworks.module1.homework4.ex3.Builder;
+import org.javaacademy.homeworks.module1.homework4.ex3.Driver;
+import org.javaacademy.homeworks.module1.homework4.ex3.Human;
+import org.javaacademy.homeworks.module1.homework4.ex3.Sounding;
+import org.javaacademy.homeworks.module1.homework4.ex4.alive.exception.HerbivoreRunException;
+import org.javaacademy.homeworks.module1.homework4.ex4.alive.exception.PredatorAttackException;
 
 
 public class Runner {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws HerbivoreRunException, PredatorAttackException {
+        System.out.println();
         ex1();
         System.out.println("__________");
         ex2();
         System.out.println("__________");
         ex3();
         System.out.println("__________");
+        ex4();
     }
 
     //Создать легковую машину (атрибуты: чистая/грязная,
@@ -77,11 +85,8 @@ public class Runner {
     // самолет летит
     // Ошибка: пассажиров в самолете меньше 0
     public static void ex2() {
-        Flying[] flyings = {
-                new Duck(false),
-                new Duck(true),
-                new Airplane(10),
-                new Airplane(-1)};
+        Flying[] flyings = {new Duck(false), new Duck(true),
+                            new Airplane(10), new Airplane(-1)};
         for (Flying flying : flyings) {
             try {
                 flying.fly();
@@ -108,43 +113,44 @@ public class Runner {
         }
     }
 
-    public static void ex4() {
-        //Задача №4 - Страсти по Дарвину
-        //Создать следующую структуру
-        //             Живое
-        //       /             \
-        //    Хищник             Травоядное
-        //    /   \              /         \
-        // волк   тигр       кролик        слон
-        //
-        //Живое - обладает свойством жив/мертв, вес. Умеет умирать - переход в состояние мертв.
-        //
-        //Хищник
-        //Умеет нападать на живое. В случае если вес жертвы больше хищника, то хищник погибает,
-        //иначе вес хищника увеличивается на треть веса жертвы и жертва погибает.
-        //Может нападать только при живом состоянии, иначе выпадает ошибка
-        // "Животное не может нападать".
-        //
-        //Травоядное - умеет бегать (не определено как).
-        // Но все травоядные могут бегать только в состоянии живое.
-        //Иначе выдает ошибку - "Животное не может бегать".
-        //
-        //Тигр умеет нападать на живое, но за счет ловкости может сьесть жертву
-        // весом до двух раз больше него.
-        //Остальные условия такие же как при нападении хищника.
-        //
-        //Волк - не обладает уникальными свойствами или действиями.
-        //Кролик - умеет бегать (печать "кролик быстро бежит")
-        //Слон - умеет бегать (печать "слон медленно бежит")
-        //
-        //Создать отдельный пакет и Runner. В Runner:
-        //1.Создать Тигра(300 кг), Волка(50 кг), кролика(2 кг), Слона (2000 кг)
-        //2.Кролик должен пробежать
-        //3.Волк ест кролика
-        //4.Тигр ест волка
-        //5.Тигр пытается съесть слона
-        //6.Слон пробегает
-        //7.Вызвать у съеденного кролика бег, сделать так, чтобы программа НЕ закончилась с ошибкой,
-        //а распечатала текст ошибки.
+    //Задача №4 - Страсти по Дарвину
+    //Создать следующую структуру
+    //             Живое
+    //       /             \
+    //    Хищник             Травоядное
+    //    /   \              /         \
+    // волк   тигр       кролик        слон
+    //
+    //Живое - обладает свойством жив/мертв, вес. Умеет умирать - переход в состояние мертв.
+    //
+    //Хищник
+    //Умеет нападать на живое. В случае если вес жертвы больше хищника, то хищник погибает,
+    //иначе вес хищника увеличивается на треть веса жертвы и жертва погибает.
+    //Может нападать только при живом состоянии, иначе выпадает ошибка
+    // "Животное не может нападать".
+    //
+    //Травоядное - умеет бегать (не определено как).
+    // Но все травоядные могут бегать только в состоянии живое.
+    //Иначе выдает ошибку - "Животное не может бегать".
+    //
+    //Тигр умеет нападать на живое, но за счет ловкости может сьесть жертву
+    // весом до двух раз больше него.
+    //Остальные условия такие же как при нападении хищника.
+    //
+    //Волк - не обладает уникальными свойствами или действиями.
+    //Кролик - умеет бегать (печать "кролик быстро бежит")
+    //Слон - умеет бегать (печать "слон медленно бежит")
+    //
+    //Создать отдельный пакет и Runner. В Runner:
+    //1.Создать Тигра(300 кг), Волка(50 кг), кролика(2 кг), Слона (2000 кг)
+    //2.Кролик должен пробежать
+    //3.Волк ест кролика
+    //4.Тигр ест волка
+    //5.Тигр пытается съесть слона
+    //6.Слон пробегает
+    //7.Вызвать у съеденного кролика бег, сделать так, чтобы программа НЕ закончилась с ошибкой,
+    //а распечатала текст ошибки.
+    public static void ex4() throws HerbivoreRunException, PredatorAttackException {
+        org.javaacademy.homeworks.module1.homework4.ex4.Runner.main(null);
     }
 }
