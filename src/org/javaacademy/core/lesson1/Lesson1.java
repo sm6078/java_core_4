@@ -1,4 +1,4 @@
-package org.javaacademy.core;
+package org.javaacademy.core.lesson1;
 
 public class Lesson1 {
     public static void main(String... args) {

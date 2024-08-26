@@ -1,21 +1,16 @@
 package org.javaacademy.homeworks.module1.homework4.ex1.car;
 
 public abstract class Car {
-    private boolean isClean;
-    private final double length;
-    private final double height;
-    private final double width;
-
+    protected boolean isClean;
+    protected final double length;
+    protected final double height;
+    protected final double width;
 
     public Car(boolean isClean, double length, double height, double width) {
         this.isClean = isClean;
         this.length = length;
         this.height = height;
         this.width = width;
-    }
-
-    public boolean isClean() {
-        return isClean;
     }
 
     public double getWidth() {
