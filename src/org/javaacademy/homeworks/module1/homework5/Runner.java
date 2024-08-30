@@ -1,32 +1,37 @@
 package org.javaacademy.homeworks.module1.homework5;
 
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import org.javaacademy.homeworks.module1.homework5.ex1.storage.DonationStorage;
+
+import java.io.IOException;
 
 public class Runner {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws IOException {
+        ex1();
+        System.out.println("____________________");
 
     }
 
-    private static void ex1() {
-        //Донаты со всего мира
-        //Одному блогеру присылают пожертвования(донаты) за его ролики
-        //Данные о пожертвованиях содержатся в файле donation.csv (папка resources)
-        //Необходимо посчитать сумму пожертвований от пользователей из каждой страны
-        //Если сумма написана некорректно, то программа должна пропускать строчку (не завершать работу)
+    //Донаты со всего мира
+    //Одному блогеру присылают пожертвования(донаты) за его ролики
+    //Данные о пожертвованиях содержатся в файле donation.csv (папка resources)
+    //Необходимо посчитать сумму пожертвований от пользователей из каждой страны
+    //Если сумма написана некорректно, то программа должна пропускать строчку (не завершать работу)
+    //Чтение файла из папки resources (без привязки к конкретному расположению проекта)
+    //Scanner scanner = new Scanner(Runner.class.getClassLoader().getResourceAsStream(filename));
+    //System.out.println(scanner.nextLine());
+
+    //Ожидаемый вывод:
+    //Список пожертвований по странам (пример):
+    //Россия - 14233.00
+    //Франция - 8000.32
+    //Китай - 20000.11
+    //Япония - 124.10
+    //Турция - 777.55
+    private static void ex1() throws IOException {
         String[] countries = {"Россия", "Франция", "Китай", "Япония", "Турция"};
         String filename = "donation.csv";
-        //Чтение файла из папки resources (без привязки к конкретному расположению проекта)
-        Scanner scanner = new Scanner(Runner.class.getClassLoader().getResourceAsStream(filename));
-        System.out.println(scanner.nextLine());
-
-        //Ожидаемый вывод:
-        //Список пожертвований по странам (пример):
-        //Россия - 14233.00
-        //Франция - 8000.32
-        //Китай - 20000.11
-        //Япония - 124.10
-        //Турция - 777.55
+        DonationStorage donationStorage = new DonationStorage(countries);
+        donationStorage.print(filename);
     }
 
     private static void ex2() {
