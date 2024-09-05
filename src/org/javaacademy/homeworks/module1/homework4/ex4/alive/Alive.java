@@ -2,8 +2,8 @@ package org.javaacademy.homeworks.module1.homework4.ex4.alive;
 
 public abstract class Alive {
 
-    private boolean isAlive = true;
-    private double weight;
+    protected boolean isAlive = true;
+    protected double weight;
 
     public Alive(double weight) {
         this.weight = weight;
