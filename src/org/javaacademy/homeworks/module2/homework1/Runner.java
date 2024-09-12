@@ -2,6 +2,8 @@ package org.javaacademy.homeworks.module2.homework1;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.javaacademy.homeworks.module2.homework1.ex1.animal.Animal;
 import org.javaacademy.homeworks.module2.homework1.ex1.animal.Bird;
 import org.javaacademy.homeworks.module2.homework1.ex1.animal.Dog;
 import org.javaacademy.homeworks.module2.homework1.ex1.animal.Tiger;
@@ -35,8 +37,8 @@ public class Runner {
     //Получили первое животное (птица) - вызвали у него полет
     //Запрещено пользоваться instanceOf.
     public static void ex1() {
-        Zoo<Tiger, Dog, Bird> zoo = new Zoo(new Tiger(), new Dog(), new Bird());
-        zoo.getAnimalOne().growl();
+        Zoo<Animal, Dog, Bird> zoo = new Zoo(new Animal(), new Dog(), new Bird());
+        zoo.getAnimalOne().test();
         zoo.getAnimalTwo().bark();
         zoo.getAnimalThree().fly();
     }
