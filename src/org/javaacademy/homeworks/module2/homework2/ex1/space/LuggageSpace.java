@@ -11,7 +11,6 @@ import org.javaacademy.homeworks.module1.homework5.Runner;
 import org.javaacademy.homeworks.module2.homework2.ex1.exception.LuggageSpaceParsingBaggageException;
 
 public class LuggageSpace {
-
     private static final String DEFAULT_NUMBER_BAGGAGE = "^[0-9]{3}[A-Z]\\d+;\\d+$";
     private static final int MAX_AMOUNT_BAGGAGE_UNLOAD = 10;
 
