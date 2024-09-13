@@ -5,27 +5,27 @@ import java.io.InputStream;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.TreeMap;
+
 import org.javaacademy.homeworks.module2.homework2.ex2.exception.CustomParsingFileException;
 import org.javaacademy.homeworks.module2.homework2.util.Utils;
 
 public class Customs {
-    //Treemap - чтобы положил по порядку (по алфавиту легкий, средний, тяжелый)
-    private final Map<TypeSuitcase, Double> weighingStorage = new TreeMap<>();
 
-    public Map<TypeSuitcase, Double> weighData(String fileName) throws IOException {
-        readAll(fileName);
+    public Map<TypeSuitcase, Double> getStatisticsByBaggageWeight(String fileName) throws IOException {
+        Map<TypeSuitcase, Double> weighingStorage = new TreeMap<>();
+        readAll(fileName, weighingStorage);
         return weighingStorage;
     }
 
-    private void parsing(String text) throws CustomParsingFileException {
-        if (Utils.isFlight(text.trim())) {
-            addWeighToStorage(Double.valueOf(text.split(";")[1]));
+    private void parsing(String text, Map<TypeSuitcase, Double> weighingStorage) throws CustomParsingFileException {
+        if (Utils.isNumberBaggage(text.trim())) {
+            addWeighToStorage(Double.valueOf(text.split(";")[1]), weighingStorage);
         } else {
             throw new CustomParsingFileException("Не удалось получить вес чемодана");
         }
     }
 
-    private void addWeighToStorage(Double weight) {
+    private void addWeighToStorage(Double weight, Map<TypeSuitcase, Double> weighingStorage) {
         if (weight < TypeSuitcase.LIGHT.getLimit()) {
             weighingStorage.put(TypeSuitcase.LIGHT,
                     weighingStorage.getOrDefault(TypeSuitcase.LIGHT, Double.valueOf(0)) + weight);
@@ -38,16 +38,15 @@ public class Customs {
         }
     }
 
-    private void readAll(String fileName) throws IOException {
-        try (InputStream resourceAsStream = Utils.getStreamInputFile(fileName);
-             Scanner scanner = new Scanner(resourceAsStream)) {
-            scanner.nextLine();
-            while (scanner.hasNext()) {
-                try {
-                    parsing(scanner.nextLine());
-                } catch (CustomParsingFileException ignore) {
-                }
+    private void readAll(String fileName, Map<TypeSuitcase, Double> weighingStorage) throws IOException {
+        Scanner scanner = Utils.readAll(fileName);
+        scanner.nextLine();
+        while (scanner.hasNext()) {
+            try {
+                parsing(scanner.nextLine(), weighingStorage);
+            } catch (CustomParsingFileException ignore) {
             }
         }
+        Utils.closedResources(scanner);
     }
 }
