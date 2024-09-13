@@ -9,9 +9,6 @@ import org.javaacademy.homeworks.module2.homework2.ex2.exception.CustomParsingFi
 import org.javaacademy.homeworks.module2.homework2.util.Utils;
 
 public class Customs {
-    private static final int LIGHT_LIMIT = 5;
-    private static final int LIGHT_MEDIUM = 10;
-
     //Treemap - чтобы положил по порядку (по алфавиту легкий, средний, тяжелый)
     private final Map<TypeSuitcase, Double> weighingStorage = new TreeMap<>();
 
@@ -29,10 +26,10 @@ public class Customs {
     }
 
     private void addWeighToStorage(Double weight) {
-        if (weight < LIGHT_LIMIT) {
+        if (weight < TypeSuitcase.LIGHT.getLimit()) {
             weighingStorage.put(TypeSuitcase.LIGHT,
                     weighingStorage.getOrDefault(TypeSuitcase.LIGHT, Double.valueOf(0)) + weight);
-        } else if (weight < LIGHT_MEDIUM) {
+        } else if (weight < TypeSuitcase.MEDIUM.getLimit()) {
             weighingStorage.put(TypeSuitcase.MEDIUM,
                     weighingStorage.getOrDefault(TypeSuitcase.MEDIUM, Double.valueOf(0)) + weight);
         } else {

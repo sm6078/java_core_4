@@ -13,7 +13,7 @@ public class Utils {
     public static InputStream getStreamInputFile(String fileName) throws FileNotFoundException {
         InputStream resourceAsStream = Runner.class.getClassLoader().getResourceAsStream(fileName);
         if (resourceAsStream == null) {
-            throw new FileNotFoundException("Файл с багажом не найден");
+            throw new FileNotFoundException("Файл не найден");
         }
         return resourceAsStream;
     }
