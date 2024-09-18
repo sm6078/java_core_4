@@ -4,18 +4,22 @@ public enum TypeSuitcase {
 
     LIGHT("Легкий" , 5),
     MEDIUM("Средний", 10),
-    HEAVY("Тяжелый", 10);
+    HEAVY("Тяжелый", null);
 
     private final String name;
-    private final int limit;
+    private final Integer limit;
 
-    TypeSuitcase(String name, int limit) {
+    TypeSuitcase(String name, Integer limit) {
         this.name = name;
         this.limit = limit;
     }
 
-    public int getLimit() {
+    public Integer getLimit() {
         return limit;
+    }
+
+    public String getName() {
+        return name;
     }
 
     @Override

@@ -44,7 +44,7 @@ public class LuggageSpace {
     }
 
     private void parsing(String text) {
-        if (Utils.isFlight(text.trim())) {
+        if (Utils.isNumberBaggage(text.trim())) {
             unloadBaggage.add(text.split(";")[0]);
         } else {
             throw new LuggageSpaceParsingBaggageException();

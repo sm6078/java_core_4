@@ -18,7 +18,7 @@ public class Customs {
     }
 
     private void parsing(String text) throws CustomParsingFileException {
-        if (Utils.isFlight(text.trim())) {
+        if (Utils.isNumberBaggage(text.trim())) {
             addWeighToStorage(Double.valueOf(text.split(";")[1]));
         } else {
             throw new CustomParsingFileException("Не удалось получить вес чемодана");
