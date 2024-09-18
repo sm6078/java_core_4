@@ -70,6 +70,6 @@ public class Runner {
      */
     public static void ex2() throws IOException {
         Customs customs = new Customs();
-        System.out.println(customs.weighData(FILE_NAME));
+        System.out.println(customs.getStatisticsByBaggageWeight(FILE_NAME));
     }
 }

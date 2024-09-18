@@ -15,24 +15,25 @@ public class LuggageSpace {
     private final Queue<String> unloadBaggage = new LinkedList<>();
 
     public void unloading(String fileName) throws IOException {
-        readAll(fileName);
+        workBaggage(Utils.readAll(fileName));
     }
 
-    private void workBaggage(Scanner scanner) {
+    private void workBaggage(Scanner scanner) throws IOException {
         while (scanner.hasNext()) {
             scanner.nextLine();
             System.out.println("Начинается загрузка на ленту");
-            String str = "";
+            String lineForParsing = "";
             while (unloadBaggage.size() < MAX_AMOUNT_BAGGAGE_UNLOAD && scanner.hasNext()) {
                 try {
-                    str = scanner.nextLine().trim();
-                    parsing(str);
+                    lineForParsing = scanner.nextLine().trim();
+                    parsing(lineForParsing);
                 } catch (LuggageSpaceParsingBaggageException ignored) {
-                    System.out.println("Не удалось получить номер багажа для строчки: " + str);
+                    System.out.println("Не удалось получить номер багажа для строчки: " + lineForParsing);
                 }
             }
             claimBaggage();
         }
+        Utils.closedResources(scanner);
     }
 
     private void claimBaggage() {
@@ -48,13 +49,6 @@ public class LuggageSpace {
             unloadBaggage.add(text.split(";")[0]);
         } else {
             throw new LuggageSpaceParsingBaggageException();
-        }
-    }
-
-    private void readAll(String fileName) throws IOException {
-        try (InputStream resourceAsStream = Utils.getStreamInputFile(fileName);
-             Scanner scanner = new Scanner(resourceAsStream)) {
-             workBaggage(scanner);
         }
     }
 }
