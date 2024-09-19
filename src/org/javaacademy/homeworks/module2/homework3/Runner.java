@@ -8,6 +8,9 @@ import org.javaacademy.homeworks.module2.homework3.ex2.human.Human;
 import org.javaacademy.homeworks.module2.homework3.ex3.burning.Burning;
 import org.javaacademy.homeworks.module2.homework3.ex3.materials.Three;
 import org.javaacademy.homeworks.module2.homework3.ex3.materials.Uranium;
+import org.javaacademy.homeworks.module2.homework3.ex4.measured_entiry.Animal;
+import org.javaacademy.homeworks.module2.homework3.ex4.measured_entiry.Boat;
+import org.javaacademy.homeworks.module2.homework3.ex4.measurement.Ruler;
 
 public class Runner {
     //похоже из-за константы функция перестает быть чистой
@@ -20,15 +23,9 @@ public class Runner {
         System.out.println("___________");
         ex3();
         System.out.println("___________");
+        ex4();
+        System.out.println("___________");
 
-
-        //Задание №4: универсальная линейка
-        //Создать функциональный интерфейс линейка: принимает в себя любой тип, возвращает Integer
-        //Создать класс животное (длина тела, длина хвоста)
-        //Создать класс лодка(длина)
-        //Создать с помощью лямбд выражений:
-        //Измеритель лодок: на вход лодка, возвращает длину лодки
-        //Измеритель животных: на вход животное, возвращает сумму длин тела и хвоста
 
         //Задание №5: сортировка отзывов
         //Создать класс отзыв с полями: id отзыва, текст отзыва, количество лайков,
@@ -101,5 +98,23 @@ public class Runner {
         Burning<Three> bonfire = three -> System.out.println("Желто-красный свет вокруг!");
         reactor.doAction(new Uranium());
         bonfire.doAction(new Three());
+    }
+
+    /**
+     * Задание №4: универсальная линейка
+     * Создать функциональный интерфейс линейка: принимает в себя любой тип, возвращает Integer
+     * Создать класс животное (длина тела, длина хвоста)
+     * Создать класс лодка(длина)
+     * Создать с помощью лямбд выражений:
+     * Измеритель лодок: на вход лодка, возвращает длину лодки
+     * Измеритель животных: на вход животное, возвращает сумму длин тела и хвоста
+     */
+    public static void ex4() {
+        Ruler<Boat> boatMeasure = boat -> (int) boat.getLength();
+        Ruler<Animal> animalMeasure = animal -> (int) (animal.getBodyLength() + animal.getTailLength());
+        System.out.printf("Длина лодки: %s единиц%n",
+                boatMeasure.measure(new Boat(21d)));
+        System.out.printf("Длина животного: %s единиц%n",
+                animalMeasure.measure(new Animal(11d, 3d)));
     }
 }
