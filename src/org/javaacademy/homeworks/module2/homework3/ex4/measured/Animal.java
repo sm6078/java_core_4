@@ -1,4 +1,4 @@
-package org.javaacademy.homeworks.module2.homework3.ex4.measured_entiry;
+package org.javaacademy.homeworks.module2.homework3.ex4.measured;
 
 /**
  * класс Животное
