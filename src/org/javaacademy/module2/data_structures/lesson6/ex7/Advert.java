@@ -29,4 +29,5 @@ public class Advert {
     public BigDecimal getPrice() {
         return price;
     }
+
 }
