@@ -1,9 +1,7 @@
 package org.javaacademy.homeworks.module2.homework4.ex3;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Stream;
 
 public class Runner {
     /**
@@ -46,7 +44,7 @@ public class Runner {
                 .limit(3).forEach(System.out::println);
         System.out.println("__________________");
         System.out.println("Самый высокий небоскреб: ");
-        Optional<Skyscraper> optional =  skyscrapers.stream()
+        Optional<Skyscraper> optional = skyscrapers.stream()
                 .max((a, b) -> a.getHeight() - b.getHeight());
         System.out.println(optional.get());
         System.out.println("__________________");
@@ -55,7 +53,5 @@ public class Runner {
                 .map(Skyscraper::toString)
                 .reduce("Небоскребов выше 1000м не найдено ", "%s\n%s"::formatted);
         System.out.println(bigSkyscrapers);
-
-        // String result2 = names.stream().reduce("", (a, b) -> "%s, %s".formatted(a, b));
     }
 }
